@@ -5,6 +5,7 @@ import { ReactComponent as ReactIcon } from '../../../assets/icons/fileIcons/css
 import { useFolder } from '../../../context/useFolder/useFolder';
 import { useEditor } from '../../../context/useEditorHeader/useEditor';
 import { SvgWrapper } from '../../../components/styleUtility';
+import { omitText } from '../../../lib/utils';
 
 const File: React.FC<{ file: CustomFile; depth: number }> = ({ file, depth }) => {
   const { deleteItem } = useFolder();
@@ -22,11 +23,10 @@ const File: React.FC<{ file: CustomFile; depth: number }> = ({ file, depth }) =>
         <F.FileIndent />
       </F.IndentWrapper>
       <F.FileItem>
-        {/* <img src={reactIcon} alt='' /> */}
         <SvgWrapper width='20px' height='20px'>
           <ReactIcon />
         </SvgWrapper>
-        <pre>{file.name}</pre>
+        <span>{omitText(file.name, 20)}</span>
       </F.FileItem>
     </F.File>
   );

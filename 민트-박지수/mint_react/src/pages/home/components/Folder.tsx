@@ -8,6 +8,7 @@ import { CustomFolder } from '../../../lib/customFolder';
 import File from './File';
 import { useFolder } from '../../../context/useFolder/useFolder';
 import { useEditor } from '../../../context/useEditorHeader/useEditor';
+import { sortedFiles, sortedFolders } from '../../../lib/folderUitility';
 
 const Folder: React.FC<{ folder: CustomFolder; depth: number }> = ({ folder, depth }) => {
   // console.log(folder.name);
@@ -51,10 +52,10 @@ const Folder: React.FC<{ folder: CustomFolder; depth: number }> = ({ folder, dep
       </F.Folder>
       {childrenState !== 'none' && (
         <U.Children hidden={childrenState === 'hidden'}>
-          {folder.folders.map((folder) => (
+          {sortedFolders(folder.folders).map((folder) => (
             <Folder key={folder.key} folder={folder} depth={depth + 1} />
           ))}
-          {folder.files.map((file) => (
+          {sortedFiles(folder.files).map((file) => (
             <File key={file.key} file={file} depth={depth + 1} />
           ))}
         </U.Children>

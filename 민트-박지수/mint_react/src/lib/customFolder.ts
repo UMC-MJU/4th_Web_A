@@ -22,8 +22,8 @@ export class CustomFolder extends Record<{
   },
   'CustomFolder'
 ) {
-  constructor(name: string, folders: CustomFolder[] = [], files: CustomFile[] = []) {
-    super({ key: uuid(), name, folders: Set(folders), files: Set(files) });
+  constructor(name: string, folders: CustomFolder[] = [], files: CustomFile[] = [], dirHandle = null) {
+    super({ key: uuid(), name, folders: Set(folders), files: Set(files), dirHandle });
   }
 
   sortFiles() {

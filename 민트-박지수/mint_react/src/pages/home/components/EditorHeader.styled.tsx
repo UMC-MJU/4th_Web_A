@@ -49,9 +49,10 @@ export const FileItem = styled.div<{ selected: boolean }>`
         visibility: unset;
       }
     }
-    > pre {
+    > span {
       font-size: 16px;
       font-weight: 500;
+      white-space: nowrap;
     }
   `}
 `;

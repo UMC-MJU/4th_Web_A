@@ -27,8 +27,8 @@ export const FolderItem = styled.div`
     color: ${theme.white};
     font-size: 16px;
     font-weight: 500;
-    > img {
-      width: 20px;
+    > span {
+      white-space: nowrap;
     }
   `}
 `;

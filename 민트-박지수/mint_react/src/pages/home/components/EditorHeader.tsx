@@ -37,7 +37,7 @@ const EditorHeader: React.FC<Props> = () => {
             <SvgWrapper width='20px' height='20px'>
               <ReactIcon />
             </SvgWrapper>
-            <pre>{file.name}</pre>
+            <span>{file.name}</span>
             <F.CloseBtn onClick={(e) => handleCloseBtnClick(e, file)}>✕</F.CloseBtn>
           </F.FileItem>
         ))}

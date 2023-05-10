@@ -1,20 +1,42 @@
 import { CustomFile } from './customFile';
 import { CustomFolder } from './customFolder';
+import { Set } from 'immutable';
 
-function addFileToFolder(forder: CustomFolder, fileToAdd: CustomFile | CustomFile[]): CustomFolder {
+export function addFileToFolder(folder: CustomFolder, fileToAdd: CustomFile | CustomFile[]): CustomFolder {
   if (Array.isArray(fileToAdd)) {
-    return forder.set('files', forder.files.union(fileToAdd));
+    return folder.set('files', folder.files.union(fileToAdd));
   } else {
-    return forder.set('files', forder.files.add(fileToAdd));
+    return folder.set('files', folder.files.add(fileToAdd));
   }
 }
 
-function addFolderToFolder(forder: CustomFolder, folderToAdd: CustomFolder[]): CustomFolder {
+export function addFolderToFolder(folder: CustomFolder, folderToAdd: CustomFolder[]): CustomFolder {
   if (Array.isArray(folderToAdd)) {
-    return forder.set('folders', forder.folders.union(folderToAdd));
+    return folder.set('folders', folder.folders.union(folderToAdd));
   } else {
-    return forder.set('folders', forder.folders.add(folderToAdd));
+    return folder.set('folders', folder.folders.add(folderToAdd));
   }
 }
 
-export { addFileToFolder, addFolderToFolder };
+export function sortedFiles(f: Set<CustomFile>) {
+  return f.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+}
+export function sortedFolders(f: Set<CustomFolder>) {
+  return f.sort((a, b) => {
+    if (a.name < b.name) {
+      return -1;
+    }
+    if (a.name > b.name) {
+      return 1;
+    }
+    return 0;
+  });
+}
