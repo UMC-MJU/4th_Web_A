@@ -1,12 +1,17 @@
 import styled, { css } from 'styled-components';
 
+export const FILE_EXPLORER_WIDTH = '300px';
+const HEADER_HEIGHT = '50px';
+const FOLDER_HEADER_HEIGHT = '30px';
+
 export const FileExplorer = styled.section`
   ${({ theme }) => css`
     flex-shrink: 0;
-    flex-basis: 300px;
+    flex-basis: ${FILE_EXPLORER_WIDTH};
     position: relative;
     /* width: 300px; */
     height: 100%;
+    overflow-x: hidden;
     background-color: ${theme.blue_900};
   `}
 `;
@@ -17,7 +22,7 @@ export const Header = styled.div`
   align-items: center;
   padding: 0 20px;
   width: 100%;
-  height: 50px;
+  height: ${HEADER_HEIGHT};
   > span {
     font-size: 14px;
     color: #ffffff;
@@ -37,13 +42,15 @@ export const H_Bar = styled.div`
   }
 `;
 
+// export const NonFolderText
+
 export const FolderHeader = styled.div`
   ${({ theme }) => css`
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 30px;
+    height: ${FOLDER_HEADER_HEIGHT};
     padding: 0 7px;
     background-color: ${theme.blue_800};
     color: ${theme.white};
@@ -83,12 +90,43 @@ export const FolderHeaderBtns = styled.div`
   `}
 `;
 
-export const Body = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+export const Body = styled.div<{ folderOpened: boolean }>`
+  ${({ theme, folderOpened }) => css`
+    display: flex;
+    flex-direction: column;
+    gap: ${folderOpened ? 0 : '15px'};
+    width: 100%;
+    height: calc(100vh - ${HEADER_HEIGHT} - ${FOLDER_HEADER_HEIGHT});
+    padding: ${folderOpened ? '0' : '20px'};
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    padding-bottom: 30px;
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: ${theme.blue_500};
+    }
+  `}
 `;
-// export const FolderItem = styled.div`
-//   display: flex;
-// `;
+
+export const OpenBtn = styled.button`
+  ${({ theme }) => css`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 4px;
+    background-color: #0078d4;
+    font-size: 14px;
+    border-radius: 2px;
+    :hover {
+      background-color: ${theme.blue_vscode};
+    }
+    > input {
+      display: none;
+    }
+  `}
+`;

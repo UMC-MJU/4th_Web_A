@@ -1,8 +1,10 @@
 import styled, { css } from 'styled-components';
 
+export const SIDE_BAR_WIDTH = '60px';
+
 export const SideBar = styled.menu`
   ${({ theme }) => css`
-    width: 60px;
+    width: ${SIDE_BAR_WIDTH};
     height: 100%;
     flex-shrink: 0;
     display: flex;

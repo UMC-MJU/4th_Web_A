@@ -1,7 +1,7 @@
 import React from 'react';
 import * as F from './EditorHeader.styled';
 import { useEditor } from '../../../context/useEditorHeader/useEditor';
-import { CustomFile } from '../hooks/CustomFile';
+import { CustomFile } from '../../../lib/customFile';
 import { SvgWrapper } from '../../../components/styleUtility';
 import { ReactComponent as RunIcon } from '../../../assets/icons/EditorHeader/run_icon.svg';
 import { ReactComponent as CodeSplit } from '../../../assets/icons/EditorHeader/code_split.svg';
@@ -34,10 +34,10 @@ const EditorHeader: React.FC<Props> = () => {
       <F.FileNameSection>
         {fileList.map((file, i) => (
           <F.FileItem key={i} onClick={(e) => handleFileItemClick(e, file)} selected={file.key === activeFile?.key}>
-            <SvgWrapper width='20px'>
+            <SvgWrapper width='20px' height='20px'>
               <ReactIcon />
             </SvgWrapper>
-            <span>{file.name}</span>
+            <pre>{file.name}</pre>
             <F.CloseBtn onClick={(e) => handleCloseBtnClick(e, file)}>✕</F.CloseBtn>
           </F.FileItem>
         ))}

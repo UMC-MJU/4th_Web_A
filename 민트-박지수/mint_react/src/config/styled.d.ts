@@ -10,6 +10,7 @@ declare module 'styled-components' {
     gray_100: string;
     black: string;
     red_500: string;
+    blue_vscode: string;
     blue_300: string;
     blue_500: string;
     blue_600: string;

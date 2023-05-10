@@ -1,6 +1,6 @@
 import React from 'react';
 import * as F from './File.styled';
-import { CustomFile } from '../hooks/CustomFile';
+import { CustomFile } from '../../../lib/customFile';
 import { ReactComponent as ReactIcon } from '../../../assets/icons/fileIcons/css.svg';
 import { useFolder } from '../../../context/useFolder/useFolder';
 import { useEditor } from '../../../context/useEditorHeader/useEditor';
@@ -26,7 +26,7 @@ const File: React.FC<{ file: CustomFile; depth: number }> = ({ file, depth }) =>
         <SvgWrapper width='20px' height='20px'>
           <ReactIcon />
         </SvgWrapper>
-        <span>{file.name}</span>
+        <pre>{file.name}</pre>
       </F.FileItem>
     </F.File>
   );

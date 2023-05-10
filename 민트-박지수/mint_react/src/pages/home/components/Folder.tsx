@@ -4,7 +4,7 @@ import * as U from './Util.styled';
 import { ReactComponent as ChevronRight } from '../../../assets/icons/chevron_right.svg';
 import { ReactComponent as ChevronDown } from '../../../assets/icons/chevron_down.svg';
 import { ReactComponent as FolderIcon } from '../../../assets/icons/fileExplorer/folder_icon.svg';
-import { CustomFolder } from '../hooks/CustomFolder';
+import { CustomFolder } from '../../../lib/customFolder';
 import File from './File';
 import { useFolder } from '../../../context/useFolder/useFolder';
 import { useEditor } from '../../../context/useEditorHeader/useEditor';

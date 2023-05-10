@@ -1,16 +1,18 @@
 import React, { createContext, useContext, useState } from 'react';
-import { CustomFolder, dummyFolder } from '../../pages/home/hooks/CustomFolder';
+import { CustomFolder, dummyFolder } from '../../lib/customFolder';
 import { findParentFolder } from './lib';
 
 type ItemType = 'folder' | 'file';
 
 interface State {
-  root: CustomFolder;
+  root: CustomFolder | null;
+  setRoot: (root: CustomFolder) => void;
   deleteItem: (type: ItemType, key: string) => void;
 }
 
 const defaultState: State = {
-  root: dummyFolder,
+  root: null,
+  setRoot: () => {},
   deleteItem: () => {},
 };
 
@@ -19,16 +21,20 @@ const Ctx = createContext(defaultState);
 const FolderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [state, setState] = useState(defaultState);
 
+  const setRoot = (root: CustomFolder) => {
+    setState((prev) => ({ ...prev, root }));
+  };
+
   const deleteItem = (type: ItemType, key: string) => {
     setState((prev) => {
-      const parentFolder = findParentFolder(key, prev.root);
+      const parentFolder = findParentFolder(key, prev.root!);
       if (!parentFolder) {
         throw new Error(`Cannot find such ${type}`);
       }
       if (type === 'folder') {
-        parentFolder.folders = parentFolder.folders.filter((folder) => folder.key !== key);
+        // parentFolder.folders = parentFolder.folders.filter((folder) => folder.key !== key);
       } else {
-        parentFolder.files = parentFolder.files.filter((file) => file.key !== key);
+        // parentFolder.files = parentFolder.files.filter((file) => file.key !== key);
       }
       return { ...prev, root: prev.root };
     });
@@ -36,6 +42,7 @@ const FolderProvider: React.FC<{ children: React.ReactNode }> = ({ children }) =
 
   const providerValue = {
     root: state.root,
+    setRoot,
     deleteItem,
   };
 

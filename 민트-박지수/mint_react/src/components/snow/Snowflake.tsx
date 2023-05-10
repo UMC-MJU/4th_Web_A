@@ -1,38 +1,42 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect } from 'react';
 import styles from './Snowflake.module.css';
 import uuid from 'react-uuid';
+import { SnowflakeStyles, SnowflakeType, makeSnowflakeStyles } from './Snow';
 
-const MIN_DURATION = 0.3; // 애니메이션 최소 지속 시간
-
-interface SnowflakeProps {
-  setSnowList: React.Dispatch<React.SetStateAction<string[]>>;
+interface SnowflakeProps extends SnowflakeStyles {
+  setSnowList: React.Dispatch<React.SetStateAction<SnowflakeType[]>>;
   _key: string;
 }
-const Snowflake: React.FC<SnowflakeProps> = ({ setSnowList, _key }) => {
-  const [animationProps, setAnimationProps] = useState({
-    left: `${Math.random() * window.screen.width}px`,
-    animationDuration: Math.random() * 20 + MIN_DURATION,
-    animationDelay: Math.random() * 10,
-    opacity: Math.random(),
-  });
-
-  const { left, animationDuration, animationDelay, opacity } = animationProps;
-
+const Snowflake: React.FC<SnowflakeProps> = ({
+  setSnowList,
+  _key,
+  left,
+  animationDuration,
+  animationDelay,
+  opacity,
+}) => {
   const makeSnowflake = useCallback(() => {
-    setSnowList((prev) => [...prev, uuid()]);
+    setSnowList((prev) => [
+      ...prev,
+      {
+        ...makeSnowflakeStyles(),
+        _key: uuid(),
+      },
+    ]);
   }, [setSnowList]);
   const removeSnowflake = useCallback(
     (key: string) => {
-      setSnowList((prev) => prev.filter((snow) => snow !== key));
+      setSnowList((prev) => prev.filter((snow) => snow._key !== key));
       makeSnowflake();
     },
     [makeSnowflake, setSnowList]
   );
 
   useEffect(() => {
-    setTimeout(() => {
+    const id = setTimeout(() => {
       removeSnowflake(_key);
     }, (animationDuration + animationDelay) * 1000);
+    return () => clearTimeout(id);
   }, [removeSnowflake, _key, animationDuration, animationDelay]);
 
   return (

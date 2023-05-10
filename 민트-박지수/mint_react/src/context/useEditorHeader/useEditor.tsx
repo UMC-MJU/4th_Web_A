@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState } from 'react';
-import { CustomFile } from '../../pages/home/hooks/CustomFile';
-import { CustomFolder } from '../../pages/home/hooks/CustomFolder';
+import { CustomFile } from '../../lib/customFile';
+import { CustomFolder } from '../../lib/customFolder';
 
 type SelectType = 'explorer' | 'editor';
 interface State {

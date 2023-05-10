@@ -1,4 +1,8 @@
 import styled, { css } from 'styled-components';
+import { SIDE_BAR_WIDTH } from './SideBar.styled';
+import { FILE_EXPLORER_WIDTH } from './FileExplorer.styled';
+
+const ButtonSectionWidth = '130px';
 
 export const EditorHeader = styled.div`
   ${({ theme }) => css`
@@ -10,14 +14,21 @@ export const EditorHeader = styled.div`
   `}
 `;
 
-const ButtonSectionWidth = '130px';
 export const FileNameSection = styled.div`
-  flex: 1;
-  display: flex;
-  align-items: center;
-  width: calc(100% - ${ButtonSectionWidth});
-  height: 100%;
-  overflow-x: scroll;
+  ${({ theme }) => css`
+    flex: 1;
+    display: flex;
+    align-items: center;
+    width: calc(100vw - ${SIDE_BAR_WIDTH} - ${FILE_EXPLORER_WIDTH} - ${ButtonSectionWidth});
+    height: 100%;
+    overflow-x: scroll;
+    ::-webkit-scrollbar {
+      height: 5px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: ${theme.blue_500};
+    }
+  `}
 `;
 
 export const FileItem = styled.div<{ selected: boolean }>`
@@ -38,7 +49,7 @@ export const FileItem = styled.div<{ selected: boolean }>`
         visibility: unset;
       }
     }
-    > span {
+    > pre {
       font-size: 16px;
       font-weight: 500;
     }

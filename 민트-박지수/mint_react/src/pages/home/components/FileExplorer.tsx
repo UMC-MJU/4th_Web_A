@@ -9,13 +9,9 @@ import refreshBtn from '../../../assets/icons/fileExplorer/refresh.png';
 import collapseBtn from '../../../assets/icons/fileExplorer/collapse_folder.png';
 import File from './File';
 import Folder from './Folder';
-import { CustomFolder } from '../hooks/CustomFolder';
-import { CustomFile } from '../hooks/CustomFile';
-
-interface Props {
-  folders?: CustomFolder[];
-  files?: CustomFile[];
-}
+import { CustomFolder } from '../../../lib/customFolder';
+import { CustomFile } from '../../../lib/customFile';
+import { useFolder } from '../../../context/useFolder/useFolder';
 
 interface HeaderBtn {
   src: string;
@@ -30,36 +26,93 @@ const headerBtns: HeaderBtn[] = [
   { src: collapseBtn, alt: '모든 폴더 접기' },
 ];
 
-const FileExplorer: React.FC<Props> = ({ folders = [], files = [] }) => {
+declare global {
+  interface Window {
+    dirHandle: FileSystemDirectoryHandle;
+    showDirectoryPicker: (options?: { mode?: 'read' | 'readwrite' }) => Promise<FileSystemDirectoryHandle>;
+  }
+  interface FileSystemDirectoryHandle {
+    entries: () => [string, FileSystemFileHandle | FileSystemDirectoryHandle][];
+    values: () => AsyncIterableIterator<FileSystemFileHandle | FileSystemDirectoryHandle>;
+  }
+}
+
+const FileExplorer: React.FC = () => {
+  const { root, setRoot } = useFolder();
+  async function onNewFolderSelect() {
+    const dirHandle = await window.showDirectoryPicker();
+    if (!dirHandle) {
+      // User cancelled, or otherwise failed to open a file.
+      console.log('hi');
+      return;
+    }
+    const rootFolder = await getFolders(dirHandle);
+    setRoot(rootFolder);
+  }
+
+  async function getFolders(dirHandle: FileSystemDirectoryHandle): Promise<CustomFolder> {
+    console.log('파일 탐색 중');
+
+    const files: CustomFile[] = [];
+    const folders: CustomFolder[] = [];
+    for await (const handle of dirHandle.values()) {
+      if (handle.kind === 'file') {
+        const file = await handle.getFile();
+        files.push(new CustomFile(file.name));
+      } else {
+        folders.push(await getFolders(handle));
+      }
+    }
+    const folder = new CustomFolder(dirHandle.name, folders, files);
+    return folder;
+  }
+
   return (
     <F.FileExplorer>
       <F.Header>
         <span>EXPLORER</span>
         <HBar />
       </F.Header>
-      <F.FolderHeader>
-        <F.FolderHeaderTitle>
-          <U.ChevronDownWrapper>
-            <ChevronDown />
-          </U.ChevronDownWrapper>
-          <span>Fuck</span>
-        </F.FolderHeaderTitle>
-        <F.FolderHeaderBtns>
-          {headerBtns.map((icon, i) => (
-            <button key={i}>
-              <img src={icon.src} alt={icon.alt} />
-            </button>
-          ))}
-        </F.FolderHeaderBtns>
-      </F.FolderHeader>
-      <F.Body>
-        {folders.map((folder) => (
-          <Folder key={folder.key} folder={folder} depth={0} />
-        ))}
-        {files.map((file) => (
-          <File key={file.key} file={file} depth={0} />
-        ))}
-      </F.Body>
+      {!root && (
+        <F.Body folderOpened={false}>
+          <span>아직 폴더를 열지 않았습니다.</span>
+          <F.OpenBtn onClick={onNewFolderSelect}>
+            {/* <input type='file' web/> */}
+            <span>폴더 열기</span>
+          </F.OpenBtn>
+          <F.OpenBtn>최근 파일 열기</F.OpenBtn>
+          <span>복제 없이 원격 리포지토리를 열거나 요청을 가져올 수 있습니다.</span>
+          <F.OpenBtn>원격 리포지토리 열기</F.OpenBtn>
+        </F.Body>
+      )}
+
+      {root && (
+        <>
+          <F.FolderHeader>
+            <F.FolderHeaderTitle>
+              <U.ChevronDownWrapper>
+                <ChevronDown />
+              </U.ChevronDownWrapper>
+              <span>{root.name}</span>
+            </F.FolderHeaderTitle>
+            <F.FolderHeaderBtns>
+              {headerBtns.map((icon, i) => (
+                <button key={i}>
+                  <img src={icon.src} alt={icon.alt} />
+                </button>
+              ))}
+            </F.FolderHeaderBtns>
+          </F.FolderHeader>
+          <F.Body folderOpened>
+            {root.folders.map((folder) => (
+              <Folder key={folder.key} folder={folder} depth={0} />
+            ))}
+            {root.files.map((file) => (
+              <File key={file.key} file={file} depth={0} />
+            ))}
+          </F.Body>
+        </>
+      )}
     </F.FileExplorer>
   );
 };
