@@ -1,0 +1,719 @@
+@import "./reset.css";
+
+@font-face {
+    font-family: 'Arita-dotum-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Arita-dotum-Medium';
+}
+
+.App {
+    font-size: 62.5%;
+}
+
+.header_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 15.4rem;
+}
+
+.service_wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 102.5rem;
+    height: 2.9rem;
+}
+
+.small_logo {
+    width: 3.8rem;
+}
+
+.small_logo::after {
+    content: "";
+    display: block;
+    width: 3.8rem;
+    height: 2.9rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/btn_gnb_20190304.png); 
+    background-position: -0.7rem -0.1rem;
+}
+
+.small_logo.active::after {
+    background-position: -0.7rem -3rem;
+  }
+  
+.service_list_wrap {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    padding: 0 2.4rem 0 0;
+}
+
+.service_list {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    width: 100%;
+}
+
+.service_list > a {
+    display: inline-block;
+    text-align: center;
+}
+
+.btn_world::after {
+    content: "";
+    display: block;
+    height: 2.9rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/top_ticket_global.png); 
+    width: 9.4rem;
+    background-position: -94rem -0.1rem;
+}
+
+.service_list >a::after {
+    content: "";
+    display: block;
+    height: 2.9rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/btn_gnb_20190304.png); 
+}
+
+.btn_login::after {
+    width: 5.9rem;
+    background-position:-74rem -0.1rem;
+}
+
+.btn_login.active::after {
+    background-position:-74rem -3rem;
+}
+
+.btn_join::after {
+    width: 7.1rem;
+    background-position: -79.9rem -0.1rem;
+}
+
+.btn_join.active::after {
+    background-position:-79.9rem -3rem;
+}
+
+.btn_customer::after{
+    width: 7.1rem;
+    background-position: -87rem -0.1rem;
+}
+
+.btn_customer.active::after{
+    background-position: -87rem -3rem;
+}
+
+.btn_howto::after{
+    width: 7.1rem;
+    background-position: -94.1rem -11.7rem;
+}
+
+.btn_howto.active::after{
+    width: 7.1rem;
+    background-position: -87.4rem -11.7rem;
+}
+
+.search_wrap {
+    display: flex;
+    flex-direction: row;
+    width: 102.5rem;
+    height: 8.3rem;
+    justify-content:space-between;
+}
+
+.search_left_wrap {
+    display: flex;
+    flex-direction: row;
+    padding: 1.9rem 0 0 0;
+}
+
+.main_logo {
+    margin: 0rem 2rem 0 0;
+}
+
+.search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #00B523;
+    width: 32rem;
+    height: 3.5rem;
+    border-radius: 3rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.search > input {
+    width: 28.2rem;
+    border: none;
+}
+
+.search > a::after {
+    content: "";
+    display: block;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/btn_comm.png);     
+}
+
+.search_logo::after {
+    background-position: -5.7rem -27.5rem;
+}
+
+.search_logo.active::after {
+    background-position: -8.5rem -27.5rem;
+}
+
+.search_logo {
+    margin: 0.5rem 0.2rem 0 0;
+}
+
+.header_event {
+    display: flex;
+    justify-content: end;
+    overflow: hidden;
+}
+
+.header_slider {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.header_slider > img {
+    margin: 0.68rem 0 0 19.05rem;
+}
+
+.controls {
+    transform: translateY(-50%);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+.controls > a {
+    position: relative;
+    right: 4rem;
+    top: 5.5rem;
+    background-color: transparent;
+}
+
+.controls > a::after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1.7rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/btn_comm.png);     
+}
+
+.pre_btn::after {
+    background-position: -18rem 0rem;
+}
+
+.pre_btn.active::after {
+    background-position: -24rem 0rem;
+}
+
+.next_btn::after {
+    background-position: -21rem 0rem;
+}
+
+.next_btn.active::after {
+    background-position: -27rem 0rem;
+}
+
+.header_hr {
+    width: 100%;
+    height: 0.5%;
+    margin: 0;
+    background-color: rgb(250, 250, 250);
+}
+
+.menu_list {
+    display: flex;
+    flex-direction: row;
+    width: 102.5rem;
+    height: 4.2rem;
+}
+
+.menu_list > a::after {
+    content: "";
+    display: block;
+    height: 4.2rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/btn_gnb_20190304.png);     
+}
+
+.btn_1::after {
+    margin: 0 0 0 1rem;
+    width: 4.4rem;
+    background-position: -1rem -16rem;
+}
+
+.btn_1.active::after {
+    background-position: -1rem -21rem;
+}
+
+.btn_2::after {
+    width: 6.8rem;
+    background-position: -5rem -16rem;
+}
+
+.btn_2.active::after {
+    background-position: -5rem -21rem;
+}
+
+.btn_3::after {
+    width: 11.3rem;
+    background-position: -12rem -16rem;
+}
+
+.btn_3.active::after {
+    background-position: -12rem -21rem;
+}
+
+.btn_4::after {
+    width: 9.2rem;
+    background-position: -23.2rem -16rem;
+}
+
+.btn_4.active::after {
+    background-position: -23.2rem -21rem;
+}
+
+.btn_5::after {
+    width: 10.8rem;
+    background-position: -32.5rem -16rem;
+}
+.btn_5.active::after {
+    background-position: -32.5rem -21rem;
+}
+.btn_6::after {
+    width: 10.8rem;
+    background-position: -43rem -16rem;
+}
+.btn_6.active::after {
+    background-position: -43rem -21rem;
+}
+.btn_7::after {
+    width: 5.8rem;
+    background-position: -53.9rem -16rem;
+}
+.btn_7.active::after {
+    background-position: -53.9rem -21rem;
+}
+.btn_8::after {
+    width: 13.2rem;
+    background-position: -59.5rem -16rem;
+}
+.btn_8.active::after {
+    background-position: -59.5rem -21rem;
+}
+.btn_9::after {
+    width: 7.1rem;
+    background-position: -72.75rem -16rem;
+}
+.btn_9.active::after {
+    background-position: -72.75rem -21rem;
+}
+
+.btn_10::after {
+    margin: 0 0 0 3rem;
+    width: 8.3rem;
+    background-position: -83.2rem -16rem;
+}
+.btn_10.active::after {
+    background-position: -83.2rem -21rem;
+}
+
+.btn_11::after {
+    width: 8.6rem;
+    background-position: -91rem -16rem;
+}
+
+.btn_11.active::after {
+    background-position: -91rem -21rem;
+}
+
+
+.slider_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 43rem;
+}
+
+
+.slider_btn::after {
+    content: "";
+    display: block;
+    width: 2.4rem;
+    height: 1.8rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/btn_comm.png);  
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 27.4rem;
+    height: 39.6rem;
+}
+
+.slide.active {
+    background-color: black;
+    color: #FFFFFF;
+}
+
+.slide a > img {
+    width: 25.56rem;
+    height: 31.96rem;;
+}
+
+.slide_text_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 26.9rem;
+    height: 7rem;
+}
+
+.slide_title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.slide_text {
+    font-size: 1.4rem;
+    color: gray;
+}
+
+.main_performance_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35.7rem;
+    margin-top: 3rem;
+}
+
+.main_performance_list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    width: 100.46rem;
+    height: 100%;
+}
+
+.main_title_wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 4.8rem;
+}
+
+.main_title_wrap > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    border: 0.01rem solid gray;
+    width: 33.5rem;
+    font-size: 1.8rem;
+    color: grey;
+}
+
+.new_performance_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;;
+}
+
+.new_performance_wrap > li {
+    display: flex;
+    flex-direction: column;
+}
+
+.new_performance_wrap img {
+    width: 15.96rem;
+    height: 22.46rem;
+}
+
+.new_performance_wrap span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    height: 3.6r;
+}
+
+.main_banner_wrap {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 2rem 0;
+}
+
+.main_float_wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.main_float_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100.8rem;
+    height: 44.2rem;
+}
+
+.main_float_list > article {
+    width: 31.96rem
+}
+
+.float_title_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5.4rem;
+}
+
+.float_title_wrap > h2::after {
+    content: "";
+    display: block;
+    width: 20rem;
+    height: 5.4rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/tit_main_float.png); 
+}
+
+.for_u_title::after {
+    background-position: 0rem -5.5rem
+}
+
+.ranking_title::after {
+    background-position: 0rem -11rem;
+}
+
+.more_btn {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.more_btn::after {
+    content: "";
+    display: block;
+    width: 1.2rem;
+    height: 3rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/ico_more.png)
+}
+
+
+.ticket_open_content > li {
+    display: flex;
+    align-items: center;
+    width: 27.8rem;
+    height: 9.7rem;
+    margin: 0 2rem;
+    border-bottom: 1px solid gray;
+
+}
+
+.ticket_open_content > li > a {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.ico {
+    width: 5.4rem;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 0 0.5rem;
+    background-color: #41D26B;
+    color: #FFFFFF;
+}
+
+.txt {
+    font-size: 1.4rem;
+    padding: 0.6rem 0 0;
+}
+
+.more {
+    font-size: 1.3rem;
+    padding: 0.4rem 0 0;
+}
+
+.for_u_tit_txt {
+    display: flex;
+    text-align: center;
+    padding: 3.6rem 1rem;
+    font-size: 1.8rem;
+    
+}
+
+.ticket_open_content,
+.for_u_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+}
+
+.circle_img {
+    overflow: hidden;
+}
+
+.circle_img > img {
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+}
+
+.circle_img::after {
+    content: "";
+    display: block;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/frame_130_130_radius.png);
+}
+
+.for_u_name {
+    margin: 0 0 2.8rem;
+    font-size: 1.8rem;
+    color: #00B523;
+}
+
+.for_u_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16.16rem;
+    height: 4.3rem;
+    border: 1px solid gray;
+    border-radius: 50rem;
+    font-size: 1.4rem;
+    margin-bottom: 4.7rem;
+}
+
+
+.rank_title_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 0 1.6rem;
+}
+
+.rank_title_list > h2 {
+    display: flex;
+    align-items: center;
+    height: 4.4rem;
+    font-size: 1.2rem;
+}
+
+.con_fev {
+    padding: 0 2rem 1rem;
+}
+
+.con_fev > a {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 27.8rem;
+    height: 10.7rem;
+}
+
+.con_fev > a > img {
+    width: 6.56rem;
+    height: 8.86rem;
+}
+
+.rank_no_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.rank_info {
+    display: flex;
+    flex-direction: column;
+    width: 16.6rem;
+}
+
+.rank_no {
+    font-size: 2.4rem;
+}
+
+.rank_tit {
+    font-size: 1.4rem;
+}
+
+.rank_line,
+.day,
+.location {
+    font-size: 1.3rem;
+}
+
+.tit {
+    font-size: 1.6rem;
+    padding: 1.3rem 0 0.9rem;
+}
+
+.for_u_content,
+.ticket_open_content,
+.rank_content {
+    border: 0.1px solid gray;
+    
+}
+
+.main_consert_container {
+    display: flex;
+    justify-content: center;
+}
+
+.main_consert_wrap {
+    width: 100.8rem;
+    padding: 3rem 0 0;
+}
+
+.main_consert_wrap > h2 {
+    font-size: 2rem;
+    padding: 0 0 1.6rem;
+    font-weight: bold;
+}
+
+.main_consert_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.main_consert_ele {
+    padding: 3rem 0 0;
+}
+
+.consert_inner {
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem 2.4rem 5rem;
+    border: 0.1px solid gray;
+}
+
+.consert_inner > img {
+    width: 17.96rem;
+    height: 24.96rem;
+}
+

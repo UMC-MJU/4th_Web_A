@@ -1,0 +1,760 @@
+@import "./Components/reset.css";
+
+@font-face {
+    font-family: 'Arita-dotum-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Arita-dotum-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Arita-dotum-Medium';
+}
+
+html {
+    font-size: 62.5%;
+}
+
+.Header_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 15.4rem;
+}
+
+.Service_wrap {
+    display: flex;
+    justify-content: space-between;
+    width: 102.5rem;
+    height: 2.9rem;
+}
+
+.Small_logo {
+    width: 3.8rem;
+}
+
+.Small_logo::after {
+    content: "";
+    display: block;
+    width: 3.8rem;
+    height: 2.9rem;
+    background-image: url(./assets/btn_gnb_20190304.png); 
+    background-position: -0.7rem -0.1rem;
+}
+
+.Small_logo.active::after {
+    background-position: -0.7rem -3rem;
+  }
+  
+.Service_list_wrap {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    padding: 0 2.4rem 0 0;
+}
+
+.Service_list {
+    display: flex;
+    justify-content:end;
+    align-items: center;
+    width: 100%;
+}
+
+.Service_list > li {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+}
+
+.Btn_world::after {
+    content: "";
+    display: block;
+    height: 2.9rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/top_ticket_global.png); 
+    width: 9.4rem;
+    background-position: -94rem -0.1rem;
+}
+
+.Service_list > li::after {
+    content: "";
+    display: block;
+}
+
+
+.Btn_login::after {
+    width: 5.9rem;
+}
+
+.Btn_join::after,
+.Btn_customer::after,
+.Btn_howto::after{
+    width: 7.1rem;
+}
+
+:active {
+    color: #00B523;
+}
+
+.Search_wrap {
+    display: flex;
+    flex-direction: row;
+    width: 102.5rem;
+    height: 8.3rem;
+    justify-content:space-between;
+}
+
+.Search_left_wrap {
+    display: flex;
+    flex-direction: row;
+    padding: 1.9rem 0 0 0;
+}
+
+.Main_logo {
+    margin: 0rem 2rem 0 0;
+}
+
+.Search {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 2px solid #00B523;
+    width: 32rem;
+    height: 3.5rem;
+    border-radius: 3rem;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.Search > input {
+    width: 28.2rem;
+    border: none;
+}
+
+.Search > span::after {
+    content: "";
+    display: block;
+    width: 2.3rem;
+    height: 2.3rem;
+    background-image: url(./assets/btn_comm.png);     
+}
+
+.Search_logo::after {
+    background-position: -5.7rem -27.5rem;
+}
+
+.Search_logo.active::after {
+    background-position: -8.5rem -27.5rem;
+}
+
+.Search_logo {
+    margin: 0.5rem 0.2rem 0 0;
+}
+
+.Header_event {
+    display: flex;
+    justify-content: end;
+    overflow: hidden;
+}
+
+.Header_slider {
+    display: flex;
+    width: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.Header_slider > img {
+    margin: 0.68rem 0 0 19.05rem;
+}
+
+.Controls {
+    transform: translateY(-50%);
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+
+}
+
+.Controls > span {
+    position: relative;
+    right: 4rem;
+    top: 5.5rem;
+    background-color: transparent;
+}
+
+.Controls > span::after {
+    content: "";
+    display: block;
+    width: 2rem;
+    height: 1.7rem;
+    background-image: url(./assets/btn_comm.png);     
+}
+
+.Pre_btn::after {
+    background-position: -18rem 0rem;
+}
+
+.Pre_btn.active::after {
+    background-position: -24rem 0rem;
+}
+
+.Next_btn::after {
+    background-position: -21rem 0rem;
+}
+
+.Next_btn.active::after {
+    background-position: -27rem 0rem;
+}
+
+.Header_hr {
+    width: 100%;
+    height: 0.5%;
+    margin: 0;
+    background-color: rgb(250, 250, 250);
+}
+
+.Menu_list {
+    display: flex;
+    flex-direction: row;
+    width: 102.5rem;
+    height: 4.2rem;
+}
+
+.Menu_list > a::after {
+    content: "";
+    display: block;
+    height: 4.2rem;
+    background-image: url(./assets/btn_gnb_20190304.png);     
+}
+
+.Btn_1::after {
+  margin: 0 0 0 1rem;
+  width: 4.4rem;
+  background-position: -1rem -16rem;
+}
+
+.Btn_2::after {
+    width: 6.8rem;
+    background-position: -5rem -16rem;
+}
+
+.Btn_2.active::after {
+    background-position: -5rem -21rem;
+}
+
+.Btn_3::after {
+    width: 11.3rem;
+    background-position: -12rem -16rem;
+}
+
+.Btn_3.active::after {
+    background-position: -12rem -21rem;
+}
+
+.Btn_4::after {
+    width: 9.2rem;
+    background-position: -23.2rem -16rem;
+}
+
+.Btn_4.active::after {
+    background-position: -23.2rem -21rem;
+}
+
+.Btn_5::after {
+    width: 10.8rem;
+    background-position: -32.5rem -16rem;
+}
+.Btn_5.active::after {
+    background-position: -32.5rem -21rem;
+}
+.Btn_6::after {
+    width: 10.8rem;
+    background-position: -43rem -16rem;
+}
+.Btn_6.active::after {
+    background-position: -43rem -21rem;
+}
+.Btn_7::after {
+    width: 5.8rem;
+    background-position: -53.9rem -16rem;
+}
+.Btn_7.active::after {
+    background-position: -53.9rem -21rem;
+}
+.Btn_8::after {
+    width: 13.2rem;
+    background-position: -59.5rem -16rem;
+}
+.Btn_8.active::after {
+    background-position: -59.5rem -21rem;
+}
+.Btn_9::after {
+    width: 7.1rem;
+    background-position: -72.75rem -16rem;
+}
+.Btn_9.active::after {
+    background-position: -72.75rem -21rem;
+}
+
+.Btn_10::after {
+    margin: 0 0 0 3rem;
+    width: 8.3rem;
+    background-position: -83.2rem -16rem;
+}
+.Btn_10.active::after {
+    background-position: -83.2rem -21rem;
+}
+
+.Btn_11::after {
+    width: 8.6rem;
+    background-position: -91rem -16rem;
+}
+
+.Btn_11.active::after {
+    background-position: -91rem -21rem;
+}
+
+
+.Slider_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+    width: 100%;
+    height: 43rem;
+}
+
+
+.Slider_btn::after {
+    content: "";
+    display: block;
+    width: 2.4rem;
+    height: 1.8rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/btn_comm.png);  
+}
+
+.Slide {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 27.4rem;
+    height: 39.6rem;
+}
+
+.Slide.active {
+    background-color: black;
+    color: #FFFFFF;
+}
+
+.Slide span > img {
+    width: 25.56rem;
+    height: 31.96rem;;
+}
+
+.Slide_text_wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 26.9rem;
+    height: 7rem;
+}
+
+.Slide_title {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.Slide_text {
+    font-size: 1.4rem;
+    color: gray;
+}
+
+.Main_performance_wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 35.7rem;
+    margin-top: 3rem;
+}
+
+.Main_performance_list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid gray;
+    width: 100.46rem;
+    height: 100%;
+}
+
+.Main_title_wrap {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 4.8rem;
+}
+
+.Main_title_wrap > h2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;;
+    border: 0.01rem solid gray;
+    width: 33.5rem;
+    font-size: 1.8rem;
+    color: grey;
+}
+
+.New_performance_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 100%;;
+}
+
+.New_performance_wrap > li {
+    display: flex;
+    flex-direction: column;
+}
+
+.New_performance_wrap img {
+    width: 15.96rem;
+    height: 22.46rem;
+}
+
+.New_performance_wrap span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4rem;
+    height: 3.6r;
+}
+
+.Main_banner_wrap {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0 2rem 0;
+}
+
+.Main_float_wrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.Main_float_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100.8rem;
+    height: 44.2rem;
+}
+
+.Main_float_list > article {
+    width: 31.96rem
+}
+
+.Float_title_wrap {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 5.4rem;
+}
+
+.Float_title_wrap > h2::after {
+    content: "";
+    display: block;
+    width: 20rem;
+    height: 5.4rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/tit_main_float.png); 
+}
+
+.For_u_title::after {
+    background-position: 0rem -5.5rem
+}
+
+.Ranking_title::after {
+    background-position: 0rem -11rem;
+}
+
+.More_btn {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+}
+
+.More_btn::after {
+    content: "";
+    display: block;
+    width: 1.2rem;
+    height: 3rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/ico_more.png)
+}
+
+
+.Ticket_open_content > li {
+    display: flex;
+    align-items: center;
+    width: 27.8rem;
+    height: 9.7rem;
+    margin: 0 2rem;
+    border-bottom: 1px solid gray;
+
+}
+
+.Ticket_open_content > li > span {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.Ico {
+    width: 5.4rem;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 0.5rem 0 0.5rem;
+    background-color: #41D26B;
+    color: #FFFFFF;
+}
+
+.Txt {
+    font-size: 1.4rem;
+    padding: 0.6rem 0 0;
+}
+
+.More {
+    font-size: 1.3rem;
+    padding: 0.4rem 0 0;
+}
+
+.For_u_tit_txt {
+    display: flex;
+    text-align: center;
+    padding: 3.6rem 1rem;
+    font-size: 1.8rem;
+    
+}
+
+.Ticket_open_content,
+.For_u_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;   
+}
+
+.Circle_img {
+    overflow: hidden;
+}
+
+.circle_img > img {
+    width: 13rem;
+    height: 13rem;
+    border-radius: 50%;
+}
+
+.circle_img::after {
+    content: "";
+    display: block;
+    width: 1.3rem;
+    height: 1.3rem;
+    background-image: url(https://cdnticket.melon.co.kr/resource/image/web/common/frame_130_130_radius.png);
+}
+
+.For_u_name {
+    margin: 0 0 2.8rem;
+    font-size: 1.8rem;
+    color: #00B523;
+}
+
+.For_u_btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 16.16rem;
+    height: 4.3rem;
+    border: 1px solid gray;
+    border-radius: 50rem;
+    font-size: 1.4rem;
+    margin-bottom: 4.7rem;
+}
+
+
+.Rank_title_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0 0 1.6rem;
+}
+
+.Rank_title_list > h2 {
+    display: flex;
+    align-items: center;
+    height: 4.4rem;
+    font-size: 1.2rem;
+}
+
+.Con_fev {
+    padding: 0 2rem 1rem;
+}
+
+.Con_fev > span {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 27.8rem;
+    height: 10.7rem;
+}
+
+.Con_fev > span > img {
+    width: 6.56rem;
+    height: 8.86rem;
+}
+
+.Rank_no_wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.Rank_info {
+    display: flex;
+    flex-direction: column;
+    width: 16.6rem;
+}
+
+.Rank_no {
+    font-size: 2.4rem;
+}
+
+.Rank_tit {
+    font-size: 1.4rem;
+}
+
+.Rank_line,
+.Day,
+.Location {
+    font-size: 1.3rem;
+}
+
+.Tit {
+    font-size: 1.6rem;
+    padding: 1.3rem 0 0.9rem;
+}
+
+.For_u_content,
+.Ticket_open_content,
+.Rank_content {
+    border: 0.1px solid gray;
+    
+}
+
+.Main_consert_container {
+    display: flex;
+    justify-content: center;
+}
+
+.Main_consert_wrap {
+    width: 100.8rem;
+    padding: 3rem 0 0;
+}
+
+.Main_consert_wrap > h2 {
+    font-size: 2rem;
+    padding: 0 0 1.6rem;
+    font-weight: bold;
+}
+
+.Main_consert_list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.Main_consert_ele {
+    padding: 3rem 0 0;
+}
+
+.Consert_inner {
+    display: flex;
+    flex-direction: column;
+    padding: 2.4rem 2.4rem 5rem;
+    border: 0.1px solid gray;
+}
+
+.Consert_inner > img {
+    width: 17.96rem;
+    height: 24.96rem;
+}
+
+/** Concert.js**/
+
+.Concert_highlight {
+    width: 100.8rem;
+    height: 45.82rem;
+}
+
+.Concert_highlight > h2 {
+    width: 14.4rem;
+    height: 3.1rem;
+    font-size: 2.8rem;
+    color: #00B523;
+    margin: 3rem 0 2.4rem;
+}
+
+.Highlight_list {
+    height: 40.32rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Highlight_list > li > img {
+    width: 23.7rem;
+    height: 33.3rem;
+}
+
+.Highlight_Info {
+    width: 22.7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/*로그인 컴포넌트 css*/
+.Login_logo {
+    padding: 6.8rem 0 4.2rem;
+}
+
+.Login_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.9rem 0 2.3rem;
+}
+
+.Form_wrap {
+    width: 38.96rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Form_wrap > input {
+    height: 4.98rem;
+}
+
+.Save_wrap {
+    height: 3.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Form_wrap > button {
+    height: 6rem;
+    padding: 1.9rem 0 1.5rem;
+    background-color: #00CD3C;
+    border: 0;
+}
