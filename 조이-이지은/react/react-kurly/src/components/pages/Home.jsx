@@ -88,7 +88,7 @@ function Home() {
 
         <section className="main-2">
           <div id="main-2-ment" alt="how-about?">
-            이 상품 어때요? {count}
+            이 상품 어때요?
           </div>
           <div className="main-2-wrap">
             <div className="main-2-img">
@@ -205,7 +205,6 @@ function Home() {
             </div>
           </div>
         </section>
-        {/* </CountContext.Provider> */}
       </main>
     </div>
   );
