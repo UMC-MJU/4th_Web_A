@@ -12,7 +12,6 @@ import Search from "../images/r-search.png";
 import Place from "../images/r-place.png";
 import List from "../images/r-list.png";
 
-import "./Header.css";
 import "../styles/styles.css";
 
 const Header = () => {
