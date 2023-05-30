@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { CustomFolder, dummyFolder } from '../../lib/customFolder';
+import { CustomFolder } from '../../lib/customFolder';
 import { findParentFolder } from './lib';
 
 type ItemType = 'folder' | 'file';

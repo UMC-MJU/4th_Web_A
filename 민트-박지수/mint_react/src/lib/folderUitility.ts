@@ -18,7 +18,15 @@ export function addFolderToFolder(folder: CustomFolder, folderToAdd: CustomFolde
   }
 }
 
-export function sortedFiles(f: Set<CustomFile>) {
+// 얕은 복사 (참조만 변경)
+export function copyedFolder(folder: CustomFolder): CustomFolder {
+  const { name, folders, files, dirHandle } = folder;
+  const newFolder = new CustomFolder(name, folders, files, dirHandle);
+  return newFolder;
+}
+
+//
+export function sortedFiles(f: Set<CustomFile>): Set<CustomFile> {
   return f.sort((a, b) => {
     if (a.name < b.name) {
       return -1;
@@ -29,7 +37,7 @@ export function sortedFiles(f: Set<CustomFile>) {
     return 0;
   });
 }
-export function sortedFolders(f: Set<CustomFolder>) {
+export function sortedFolders(f: Set<CustomFolder>): Set<CustomFolder> {
   return f.sort((a, b) => {
     if (a.name < b.name) {
       return -1;

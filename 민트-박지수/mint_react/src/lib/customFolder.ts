@@ -5,6 +5,7 @@ import { addFolderToFolder } from './folderUitility';
 
 // 불변 객체로 만들자니 효율이 너무 떨어지고
 // 가변 객체로 만들자니 변경 시 state 트리거가 안된다.
+// 얕은 복사로 해결하자
 
 export class CustomFolder extends Record<{
   key: string;
@@ -22,8 +23,13 @@ export class CustomFolder extends Record<{
   },
   'CustomFolder'
 ) {
-  constructor(name: string, folders: CustomFolder[] = [], files: CustomFile[] = [], dirHandle = null) {
-    super({ key: uuid(), name, folders: Set(folders), files: Set(files), dirHandle });
+  constructor(
+    name: string,
+    folders: Set<CustomFolder> = Set<CustomFolder>(),
+    files: Set<CustomFile> = Set<CustomFile>(),
+    dirHandle: FileSystemDirectoryHandle | null
+  ) {
+    super({ key: uuid(), name, folders, files, dirHandle });
   }
 
   sortFiles() {
@@ -50,23 +56,23 @@ export class CustomFolder extends Record<{
   }
 }
 
-export const dummyFolder = (() => {
-  let folder = new CustomFolder('src');
-  folder = addFolderToFolder(folder, [
-    new CustomFolder('components', [
-      new CustomFolder('styles'),
-      new CustomFolder('utils', [], [new CustomFile('styleUtility.tsx')]),
-    ]),
-    new CustomFolder('pages', [
-      new CustomFolder(
-        'home',
-        [new CustomFolder('components'), new CustomFolder('hooks')],
-        [new CustomFile('Home.styled.tsx'), new CustomFile('Home.tsx')]
-      ),
-      new CustomFolder('page404'),
-    ]),
-    new CustomFolder('types', [], [new CustomFile('format.d.ts'), new CustomFile('types.ts')]),
-    new CustomFolder('assets', [new CustomFolder('icon'), new CustomFolder('images')]),
-  ]);
-  return folder;
-})();
+// export const dummyFolder = (() => {
+//   let folder = new CustomFolder('src');
+//   folder = addFolderToFolder(folder, [
+//     new CustomFolder('components', [
+//       new CustomFolder('styles'),
+//       new CustomFolder('utils', [], [new CustomFile('styleUtility.tsx')]),
+//     ]),
+//     new CustomFolder('pages', [
+//       new CustomFolder(
+//         'home',
+//         [new CustomFolder('components'), new CustomFolder('hooks')],
+//         [new CustomFile('Home.styled.tsx'), new CustomFile('Home.tsx')]
+//       ),
+//       new CustomFolder('page404'),
+//     ]),
+//     new CustomFolder('types', [], [new CustomFile('format.d.ts'), new CustomFile('types.ts')]),
+//     new CustomFolder('assets', [new CustomFolder('icon'), new CustomFolder('images')]),
+//   ]);
+//   return folder;
+// })();

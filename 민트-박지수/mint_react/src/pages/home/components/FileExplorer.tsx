@@ -12,6 +12,7 @@ import Folder from './Folder';
 import { CustomFolder } from '../../../lib/customFolder';
 import { CustomFile } from '../../../lib/customFile';
 import { useFolder } from '../../../context/useFolder/useFolder';
+import { Set } from 'immutable';
 
 interface HeaderBtn {
   src: string;
@@ -58,12 +59,13 @@ const FileExplorer: React.FC = () => {
     for await (const handle of dirHandle.values()) {
       if (handle.kind === 'file') {
         const file = await handle.getFile();
-        files.push(new CustomFile(file.name));
+
+        files.push(new CustomFile(file.name, handle));
       } else {
         folders.push(await getFolders(handle));
       }
     }
-    const folder = new CustomFolder(dirHandle.name, folders, files);
+    const folder = new CustomFolder(dirHandle.name, Set(folders), Set(files), dirHandle);
     return folder;
   }
 
