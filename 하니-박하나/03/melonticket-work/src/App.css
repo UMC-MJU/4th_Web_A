@@ -61,9 +61,10 @@ html {
     width: 100%;
 }
 
-.Service_list > span {
+.Service_list > li {
     display: inline-block;
     text-align: center;
+    position: relative;
 }
 
 .Btn_world::after {
@@ -75,48 +76,24 @@ html {
     background-position: -94rem -0.1rem;
 }
 
-.Service_list >span::after {
+.Service_list > li::after {
     content: "";
     display: block;
-    height: 2.9rem;
-    background-image: url(./assets/btn_gnb_20190304.png); 
 }
+
 
 .Btn_login::after {
     width: 5.9rem;
-    background-position:-74rem -0.1rem;
 }
 
-.Btn_login.active::after {
-    background-position:-74rem -3rem;
-}
-
-.Btn_join::after {
-    width: 7.1rem;
-    background-position: -79.9rem -0.1rem;
-}
-
-.Btn_join.active::after {
-    background-position:-79.9rem -3rem;
-}
-
-.Btn_customer::after{
-    width: 7.1rem;
-    background-position: -87rem -0.1rem;
-}
-
-.Btn_customer.active::after{
-    background-position: -87rem -3rem;
-}
-
+.Btn_join::after,
+.Btn_customer::after,
 .Btn_howto::after{
     width: 7.1rem;
-    background-position: -94.1rem -11.7rem;
 }
 
-.Btn_howto.active::after{
-    width: 7.1rem;
-    background-position: -87.4rem -11.7rem;
+:active {
+    color: #00B523;
 }
 
 .Search_wrap {
@@ -244,7 +221,7 @@ html {
     height: 4.2rem;
 }
 
-.Menu_list > span::after {
+.Menu_list > a::after {
     content: "";
     display: block;
     height: 4.2rem;
@@ -256,8 +233,6 @@ html {
   width: 4.4rem;
   background-position: -1rem -16rem;
 }
-
-
 
 .Btn_2::after {
     width: 6.8rem;
@@ -575,13 +550,13 @@ html {
     overflow: hidden;
 }
 
-.Circle_img > img {
+.circle_img > img {
     width: 13rem;
     height: 13rem;
     border-radius: 50%;
 }
 
-.Circle_img::after {
+.circle_img::after {
     content: "";
     display: block;
     width: 1.3rem;
@@ -715,3 +690,71 @@ html {
     height: 24.96rem;
 }
 
+/** Concert.js**/
+
+.Concert_highlight {
+    width: 100.8rem;
+    height: 45.82rem;
+}
+
+.Concert_highlight > h2 {
+    width: 14.4rem;
+    height: 3.1rem;
+    font-size: 2.8rem;
+    color: #00B523;
+    margin: 3rem 0 2.4rem;
+}
+
+.Highlight_list {
+    height: 40.32rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.Highlight_list > li > img {
+    width: 23.7rem;
+    height: 33.3rem;
+}
+
+.Highlight_Info {
+    width: 22.7rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/*로그인 컴포넌트 css*/
+.Login_logo {
+    padding: 6.8rem 0 4.2rem;
+}
+
+.Login_wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.9rem 0 2.3rem;
+}
+
+.Form_wrap {
+    width: 38.96rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.Form_wrap > input {
+    height: 4.98rem;
+}
+
+.Save_wrap {
+    height: 3.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Form_wrap > button {
+    height: 6rem;
+    padding: 1.9rem 0 1.5rem;
+    background-color: #00CD3C;
+    border: 0;
+}

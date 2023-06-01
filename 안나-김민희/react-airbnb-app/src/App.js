@@ -1,38 +1,70 @@
-import React, { useState } from "react";
-import Header from "./components/Header";
-import Type from "./components/Type";
-import Content from "./components/Content";
+import React, { useEffect } from "react";
 import "./App.css";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import { Host } from "./pages/Host";
+import { Wrapper } from "./pages/Wrapper";
+import { Account } from "./pages/Account";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { loginAtom } from "./recoil/atom";
+import LoginModal from "./components/Home/atoms/LoginModal";
+import styled from "styled-components";
 
 const App = () => {
-  const [click, setClick] = useState(false);
-  const button_content = ["지도 표시하기 🗺️", "목록 보기 🗒️"];
-  const [button, setButton] = useState(button_content[0]);
+  const [login, setLogin] = useRecoilState(loginAtom);
 
-  const changeContent = () => {
-    setClick(!click);
-    if (click) {
-      setButton(button_content[0]);
+  useEffect(() => {
+    if (login.token) {
+      setLogin((prevLogin) => ({ ...prevLogin, isLoggedIn: true }));
     } else {
-      setButton(button_content[1]);
+      setLogin((prevLogin) => ({ ...prevLogin, isLoggedIn: false }));
     }
-  };
+  }, [login.token, setLogin]);
 
   return (
-    <div className="App">
-      <div className="wrapper">
-        <div className="wrapper__header">
-          <Header />
-          <div className="line"></div>
-          <Type />
-        </div>
-        <Content click={click} />
-      </div>
-      <button id="button__map" onClick={changeContent}>
-        {button}
-      </button>
-    </div>
+    <Routes>
+      <Route index element={<HomeWrapper />} />
+      <Route path="account" element={<HomeAccount login={login} />} />
+      <Route path="host" element={<Host />} />
+      <Route path="*" element={<h1>NotFound</h1>} />
+    </Routes>
   );
 };
 
 export default App;
+
+const HomeWrapper = () => {
+  return (
+    <div>
+      <Home />
+      <Wrapper />
+    </div>
+  );
+};
+
+const HomeAccount = ({ login }) => {
+  return login ? (
+    <div>
+      <Home />
+      <Account LoginWrapper={LoginWrapper} />
+    </div>
+  ) : (
+    <div>
+      <Home />
+      <LoginWrapper>
+        <LoginModal />
+      </LoginWrapper>
+    </div>
+  );
+};
+
+const LoginWrapper = styled.div`
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 600px;
+  margin-top: 100px;
+  position: fixed;
+  left: 35%;
+  top: 15%;
+`;
